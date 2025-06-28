@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MakanMaknyusDotCom</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="about.css" />
+</head>
+<body>
+<!-- Tombol back pakai gambar -->
+<div onclick="history.back()" class="absolute top-6 left-6 z-50 cursor-pointer select-none">
+    <img src="assets/Arrow left.png" alt="Kembali" class="w-8 h-8 md:w-10 md:h-10" />
+  </div>
+  
+  <!-- Container utama -->
+  <div class="min-h-screen flex items-center justify-center px-6">
+    <div class="bg-[rgba(255,255,240,0.9)] max-w-xl w-full p-8 rounded-2xl border-[5px] border-dotted border-[#a0522d] shadow-md z-10">
+      <h1 class="text-xl md:text-2xl font-extrabold text-[#a00000] mb-6">
+        Selamat datang di MakanMaknyusDotCom
+      </h1>
+      <p class="text-[16px] md:text-[20px] text-[#1a1a1a] leading-relaxed">
+        Kami adalah platform digital yang menyajikan berbagai resep masakan
+        rumahan yang mudah, praktis, dan tentu saja maknyus rasanya. Website ini
+        dibuat untuk siapa saja yang ingin memasak — baik pemula yang baru
+        belajar di dapur, maupun juru masak rumahan yang ingin mencoba kreasi
+        baru.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Falafel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-[#f4bb5f] min-h-screen flex items-start justify-center p-6">
+    <div class="max-w-3xl w-full">
+      <button onclick="history.back()" aria-label="Back" class="mb-6 text-black text-xl pl-3">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <div class="flex flex-col sm:flex-row items-start gap-8">
+        <!-- Teks -->
+        <div class="text-[15px] text-white leading-relaxed flex-1 pl-2">
+          <p class="font-bold text-lg mb-2">🥙 Falafel (Timur Tengah)</p>
+
+          <p class="font-bold">Bahan:</p>
+          <ul class="list-disc list-inside mb-3 space-y-1">
+            <li>250 gr kacang arab kering (rendam semalaman)</li>
+            <li>1 bawang bombay</li>
+            <li>2 siung bawang putih</li>
+            <li>1 sdt jintan</li>
+            <li>1/2 sdt ketumbar bubuk</li>
+            <li>Garam, lada, daun ketumbar/peterseli</li>
+          </ul>
+
+          <p class="font-bold mb-1">Cara Membuat:</p>
+          <ol class="list-decimal list-inside space-y-1">
+            <li>Haluskan semua bahan hingga membentuk adonan yang bisa dipulung.</li>
+            <li>Bentuk bulat pipih seperti perkedel kecil.</li>
+            <li>Goreng dalam minyak panas hingga kecokelatan dan renyah.</li>
+            <li>Sajikan dengan saus yogurt atau di dalam roti pita.</li>
+          </ol>
+
+          <!-- Video Tutorial Falafel  -->
+          <section class="mt-10">
+            <h2 class="text-xl font-bold text-[#7a1a0a] mb-4">🎥 Video Tutorial Falafel </h2>
+            <ul class="list-disc list-inside text-white space-y-2">
+              <li>
+                <a href="https://youtu.be/4HafGp0NgAI?si=9nrCMPtKrJGBSjv8" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT FALAFEL VERSI 1
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/NXkG8baMqvA?si=w_lqEB0Mc6ck1g92" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT FALAFEL VERSI 2
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/85vMqscp1OU?si=ZsYk8rbl655223k_" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT FALAFEL VERSI 3
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Gambar -->
+        <img
+          src="assets/th 29.png"
+          alt="Falafel"
+          class="w-[160px] h-[160px] rounded-2xl object-cover ml-auto"
+        />
+      </div>
+    </div>
+  </body>
+</html>

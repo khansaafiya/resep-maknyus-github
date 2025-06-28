@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('assets/aboutBG.png'); /* Pastikan gambar di folder "assets" */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* atau 'cover' jika ingin penuh, tapi 'contain' mirip dengan gambar contoh */
+    background-color: #fefae0;
+  }
+  
+  .content-box {
+    font-feature-settings: 'liga' 0;
+  }
+  
+  .back-button {
+    font-feature-settings: 'liga' 0;
+  }
+  

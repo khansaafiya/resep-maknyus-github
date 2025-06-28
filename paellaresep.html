@@ -1,0 +1,79 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paella</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-[#f4bb5f] min-h-screen flex items-start justify-center p-6">
+    <div class="max-w-3xl w-full">
+      <button onclick="history.back()" aria-label="Back" class="mb-6 text-black text-xl pl-3">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <div class="flex flex-col sm:flex-row items-start gap-8">
+        <!-- Teks -->
+        <div class="text-[15px] text-white leading-relaxed flex-1 pl-2">
+          <p class="font-bold text-lg mb-2">🥘 Paella (Spanyol)</p>
+
+          <p class="font-bold">Bahan:</p>
+          <ul class="list-disc list-inside mb-3 space-y-1">
+            <li>250 gr beras arborio/nasi pulen</li>
+            <li>300 gr seafood campur (udang, kerang, cumi)</li>
+            <li>1/2 bawang bombay</li>
+            <li>2 siung bawang putih</li>
+            <li>1 buah tomat, parut</li>
+            <li>1/2 sdt kunyit bubuk</li>
+            <li>500 ml kaldu ayam</li>
+            <li>Minyak zaitun, garam, lada secukupnya</li>
+          </ul>
+
+          <p class="font-bold mb-1">Cara Membuat:</p>
+          <ol class="list-decimal list-inside space-y-1">
+            <li>Tumis bawang, bawang putih, dan tomat.</li>
+            <li>Masukkan beras, aduk rata dengan kunyit bubuk.</li>
+            <li>Tuang kaldu, masak hingga beras setengah matang.</li>
+            <li>Tambahkan seafood, tutup wajan dan lanjutkan memasak hingga matang sempurna.</li>
+            <li>Sajikan langsung dari wajan untuk cita rasa autentik.</li>
+          </ol>
+
+          <!-- Video Tutorial Paella  -->
+          <section class="mt-10">
+            <h2 class="text-xl font-bold text-[#7a1a0a] mb-4">🎥 Video Tutorial Paella </h2>
+            <ul class="list-disc list-inside text-white space-y-2">
+              <li>
+                <a href="https://youtu.be/gZ7VeR2FmC8?si=1nJWTa9fBC5mZyIE" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT PAELLA VERSI 1
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/vNBuXsTY15E?si=LPyAxmEeY3HMmVAs" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT PAELLA VERSI 2
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/yhErdWnEsbY?si=zOHsRvvaUrxGh4DU" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT PAELLA VERSI 3
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Gambar -->
+        <img
+          src="assets/th 27.png"
+          alt="Paella"
+          class="w-[160px] h-[160px] rounded-2xl object-cover ml-auto"
+        />
+      </div>
+    </div>
+  </body>
+</html>

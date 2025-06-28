@@ -1,0 +1,74 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gnocchi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-[#f4bb5f] min-h-screen flex items-start justify-center p-6">
+    <div class="max-w-3xl w-full">
+      <button onclick="history.back()" aria-label="Back" class="mb-6 text-black text-xl pl-3">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <div class="flex flex-col sm:flex-row items-start gap-8">
+        <!-- Teks -->
+        <div class="text-[15px] text-white leading-relaxed flex-1 pl-2">
+          <p class="font-bold text-lg mb-2">🍽️ Gnocchi (Italia)</p>
+
+          <p class="font-bold">Bahan:</p>
+          <ul class="list-disc list-inside mb-3 space-y-1">
+            <li>2 buah kentang besar (kukus, haluskan)</li>
+            <li>100 gr tepung terigu</li>
+            <li>1 kuning telur</li>
+            <li>Garam secukupnya</li>
+          </ul>
+
+          <p class="font-bold mb-1">Cara Membuat:</p>
+          <ol class="list-decimal list-inside space-y-1">
+            <li>Campur kentang, tepung, kuning telur, dan garam hingga menjadi adonan lembut.</li>
+            <li>Bentuk adonan memanjang, lalu potong kecil-kecil sesuai ukuran gnocchi.</li>
+            <li>Rebus dalam air mendidih hingga mengapung.</li>
+            <li>Sajikan dengan saus tomat atau saus krim sesuai selera.</li>
+          </ol>
+
+          <!-- Video Tutorial Gnocchi  -->
+          <section class="mt-10">
+            <h2 class="text-xl font-bold text-[#7a1a0a] mb-4">🎥 Video Tutorial Gnocchi </h2>
+            <ul class="list-disc list-inside text-white space-y-2">
+              <li>
+                <a href="https://youtu.be/rG-6Kotrccc?si=oPNDVJUL5xP_3xX6" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT GNOCCHI VERSI 1
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/7G0umuf4PUA?si=oUx79fv4uh1YzM-8" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT GNOCCHI VERSI 2
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/R_7Gv0YFpXo?si=JymvgsAPbRuYjHy2" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT GNOCCHI VERSI 3
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Gambar -->
+        <img
+          src="assets/th 28.png"
+          alt="Gnocchi"
+          class="w-[160px] h-[160px] rounded-2xl object-cover ml-auto"
+        />
+      </div>
+    </div>
+  </body>
+</html>

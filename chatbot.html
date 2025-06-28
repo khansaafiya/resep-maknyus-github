@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Chatbot dengan Ikon yang Bisa Dibuka/Tutup</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fffdf5;
+  }
+
+  /* Ikon chatbot: fixed pojok kanan bawah */
+  #chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #fb8500;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10000;
+  }
+
+  /* Chatbot container, baru muncul kalau aktif */
+  #chatbot-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    height: 340px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: 3px solid #ffb703;
+    background-color: #fffdf5;
+    display: none; /* awalnya hidden */
+    flex-direction: column;
+    z-index: 10001;
+  }
+
+  .chatbot-header {
+    background-color: #fb8500;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+  }
+
+  .chatbot-header button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .chatbox {
+    height: 260px;
+    overflow-y: auto;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #fff6e0;
+  }
+
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+  }
+
+  .chat-input button {
+    background-color: #ff7f50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bubble {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Ikon chatbot -->
+  <div id="chatbotIcon" title="Buka ResBot">🍳</div>
+
+  <!-- Chatbot container, awalnya tersembunyi -->
+  <div id="chatbotContainer">
+    <div class="chatbot-header">
+      👩‍🍳 ResBot: Sahabat Dapur!
+      <button id="close-btn" title="Tutup Chatbot">&times;</button>
+    </div>
+    <div id="chatBox" class="chatbox"></div>
+    <div class="chat-input">
+      <input id="userInput" type="text" placeholder="Tulis bahanmu: contoh 'bayam dan wortel'" />
+      <button id="sendBtn">🍳</button>
+    </div>
+  </div>
+
+<script>
+  const chatbotIcon = document.getElementById('chatbotIcon');
+  const chatbotContainer = document.getElementById('chatbotContainer');
+  const closeBtn = document.getElementById('close-btn');
+  const sendBtn = document.getElementById('sendBtn');
+  const userInput = document.getElementById('userInput');
+  const chatBox = document.getElementById('chatBox');
+
+  // Saat klik ikon, buka chatbot
+  chatbotIcon.addEventListener('click', () => {
+    chatbotContainer.style.display = 'flex';
+    chatbotIcon.style.display = 'none';
+    userInput.focus();
+  });
+
+  // Saat klik tombol tutup, sembunyikan chatbot & tampilkan ikon lagi
+  closeBtn.addEventListener('click', () => {
+    chatbotContainer.style.display = 'none';
+    chatbotIcon.style.display = 'flex';
+    chatBox.innerHTML = "";  // Optional: bersihkan chat saat tutup
+  });
+
+  // Fungsi mengirim pesan
+  function kirimPesan() {
+    const pesan = userInput.value.trim().toLowerCase();
+    if (!pesan) return;
+
+    chatBox.innerHTML += `<div class="bubble"><strong>👤:</strong> ${pesan}</div>`;
+
+    let jawaban = "Maaf, aku belum tahu resep itu 😥";
+
+    if (pesan.includes("bayam") && pesan.includes("wortel")) {
+      jawaban = "Kamu bisa coba Sayur Bening Bayam Wortel 🍲";
+    } else if (pesan.includes("bayam")) {
+      jawaban = "Tumis Bayam mantap nih buat makan siang!";
+    } else if (pesan.includes("wortel")) {
+      jawaban = "Wortel enak banget buat sup atau oseng sayur 🥕";
+    }
+
+    setTimeout(() => {
+      chatBox.innerHTML += `<div class="bubble"><strong>🤖:</strong> ${jawaban}</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }, 500);
+
+    userInput.value = "";
+    userInput.focus();
+  }
+
+  // Event kirim pesan saat klik tombol
+  sendBtn.addEventListener('click', kirimPesan);
+
+  // Event kirim pesan saat tekan enter
+  userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      kirimPesan();
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Croque Monsieur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-[#f4bb5f] min-h-screen flex items-start justify-center p-6">
+    <div class="max-w-3xl w-full">
+      <button onclick="history.back()" aria-label="Back" class="mb-6 text-black text-xl pl-3">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <div class="flex flex-col sm:flex-row items-start gap-8">
+        <!-- Teks -->
+        <div class="text-[15px] text-white leading-relaxed flex-1 pl-2">
+          <p class="font-bold text-lg mb-2">🥪 Croque Monsieur (Prancis)</p>
+
+          <p class="font-bold">Bahan:</p>
+          <ul class="list-disc list-inside mb-3 space-y-1">
+            <li>4 lembar roti tawar</li>
+            <li>4 lembar keju</li>
+            <li>4 lembar daging asap</li>
+            <li>2 sdm mentega</li>
+            <li>1 sdm tepung terigu</li>
+            <li>100 ml susu</li>
+            <li>Sejumput garam & lada</li>
+          </ul>
+
+          <p class="font-bold mb-1">Cara Membuat:</p>
+          <ol class="list-decimal list-inside space-y-1">
+            <li>Buat saus putih: lelehkan mentega, tambahkan tepung, tuang susu, aduk hingga mengental.</li>
+            <li>Susun roti + daging asap + keju + saus putih, lalu tutup dengan roti lainnya.</li>
+            <li>Panggang 5-10 menit hingga keju meleleh dan roti berwarna keemasan.</li>
+          </ol>
+
+          <!-- Video Tutorial Croque Monsieur  -->
+          <section class="mt-10">
+            <h2 class="text-xl font-bold text-[#7a1a0a] mb-4">🎥 Video Tutorial Croque Monsieur </h2>
+            <ul class="list-disc list-inside text-white space-y-2">
+              <li>
+                <a href="https://youtu.be/ibwcJ7LLgqE?si=0EIls0-9jE9ccdWm" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT CROQUE MONSIEUR VERSI 1
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/ffsWlLG4Tz4?si=8Zy_aOrBdKOhMmNT" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT CROQUE MONSIEUR VERSI 2
+                </a>
+              </li>
+              <li>
+                <a href="https://youtu.be/J48waehJT4Y?si=ZqiILHfBEaKftGEb" target="_blank" class="underline font-semibold">
+                  CARA MEMBUAT CROQUE MONSIEUR VERSI 3
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Gambar -->
+        <img
+          src="assets/th 26.png"
+          alt="Croque Monsieur"
+          class="w-[160px] h-[160px] rounded-2xl object-cover ml-auto"
+        />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pencarian Resep</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="relative min-h-screen flex flex-col items-center justify-start p-10 pt-5">
+
+  <!-- Background -->
+  <img src="assets/Indonesian Foods 1.png" alt="Background"
+       class="absolute left-0 right-0 top-[110px] mx-auto w-full h-[800px] object-cover object-center opacity-100 -z-10" />
+
+  <!-- Search Bar -->
+  <div class="flex items-center p-3 bg-white/10 backdrop-blur-sm w-full max-w-7xl rounded-xl">
+    <button aria-label="Back" onclick="history.back()" class="text-black text-2xl ml-2">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <div class="flex-grow ml-4 mr-4">
+      <div class="relative">
+        <input type="text"
+               id="searchInput"
+               class="w-full text-xl py-4 px-6 pr-14 rounded-lg bg-[#f88f6f]/80 text-white placeholder-white placeholder-opacity-80 focus:outline-none"
+               placeholder="Masukkan pencarianmu"/>
+        <i class="fas fa-search absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-xl pointer-events-none"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hasil Pencarian (default: hidden) -->
+  <div id="hasilPencarian" class="mt-12 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 hidden"></div>
+
+  <script>
+    const resepList = [
+      { nama: "Bolu Kukus Mekar", link: "cakeresep_bolu.html", gambar: "assets/th 5.png" },
+      { nama: "Brownies Panggang Lumer", link: "cakeresep_brownies.html", gambar: "assets/photo 1.png" },
+      { nama: "Japanese Cheesecake", link: "cakeresep_cheesecake.html", gambar: "assets/th 6.png" },
+      { nama: "Puding Lumut Pandan", link: "puddingresep_lumut.html", gambar: "assets/puding-lumut-pandan-kelapa-muda-foto-resep-utama 1.png" },
+      { nama: "Agar-agar Buah", link: "puddingresep_buah.html", gambar: "assets/745x489-img-19024-ilustrasi-puding-buah-shutterstock 2.png" },
+      { nama: "Puding Roti Tawar Kukus", link: "puddingresep_roti.html", gambar: "assets/puding-roti-tawar-kukus-rasanya-bikin-nagih-OFHm5WA77G 1.png" },
+      { nama: "Tiramisu Dessert Box", link: "desserttiramisu.html", gambar: "assets/sg-11134201-7qvdc-lfkwpz825vnw9b 1.png" },
+      { nama: "Regal Cokelat Dessert Box", link: "dessertregal.html", gambar: "assets/th 7.png" },
+      { nama: "Oreo Cream Cheese Dessert Box", link: "dessertoreo.html", gambar: "assets/099377600_1629434369-shutterstock_1764235190 1.png" },
+      { nama: "Es Cendol Gula Merah", link: "esresep_cendol.html", gambar: "assets/c6e7f87cae74684b2d793e3defebd26a 1.png" },
+      { nama: "Es Teler", link: "esresep_teler.html", gambar: "assets/th 8.png" },
+      { nama: "Es Doger", link: "esresep_doger.html", gambar: "assets/th 9.png" },
+      { nama: "Klepon Gula Merah", link: "tradisresep_klepon.html", gambar: "assets/Klepon 1.png" },
+      { nama: "Nagasari Pisang", link: "tradisresep_nagasari.html", gambar: "assets/th 10.png" },
+      { nama: "Dadar Gulung Isi Kelapa", link: "tradisresep_dadargulung.html", gambar: "assets/th 11.png" },
+      { nama: "Nasi uduk", link: "nasiuduk_resep.html", gambar: "assets/th 12.png" },
+      { nama: "Orek Tempe", link: "orektempe_resep.html", gambar: "assets/orek-tempe-basah-1 1.png" },
+      { nama: "Nasi Liwet", link: "nasiliwet_resep.html", gambar: "assets/th 13.png" },
+      { nama: "Dendeng Balado", link: "dendengbalado_resep.html", gambar: "assets/6247cfd4495ba 1.png" },
+      { nama: "Ayam Bakar", link: "ayambakar_resep.html", gambar: "assets/Resep-Ayam-bakar-bumbu-bali 1.png" },
+      { nama: "Rica-Rica Entok", link: "ricaentok_resep.html", gambar: "assets/maxresdefault 1 (1).png" },
+      { nama: "Ikan Bakar", link: "ikanbakar_resep.html", gambar: "assets/th 14.png" },
+      { nama: "Udang Saus Padang", link: "udangsaus_resep.html", gambar: "assets/udang-saus-padang-shrimp-in-chili-sauce-traditional-food-from-padang-indonesia-served-in-white-bowl-photo 1.png" },
+      { nama: "Cumi Hitam", link: "cumihitam_resep.html", gambar: "assets/th 15.png" },
+      { nama: "Sayur Asem", link: "sayurasem_resep.html", gambar: "assets/th 16.png" },
+      { nama: "Tumis Kangkung", link: "tumiskangkung_resep.html", gambar: "assets/th 17.png" },
+      { nama: "Soto Ayam", link: "sotoayam_resep.html", gambar: "assets/th 18.png" },
+      { nama: "Mie Goreng Jawa", link: "miegoreng_resep.html", gambar: "assets/th 19.png" },
+      { nama: "Spaghetti", link: "spaghetti_resep.html", gambar: "assets/th 20.png" },
+      { nama: "Lasagna", link: "lasagna_resep.html", gambar: "assets/th 21.png" },
+      { nama: "Tom Yum", link: "tomyumresep.html", gambar: "assets/th 22.png" },
+      { nama: "Chicken Katsu", link: "chickenkatsu_resep.html", gambar: "assets/th 23.png" },
+      { nama: "Butter Chicken", link: "butterchicken_resep.html", gambar: "assets/th 24.png" },
+      { nama: "Beef Bulgoogi", link: "beefbulgogi_resep.html", gambar: "assets/th 25.png" },
+      { nama: "Croque Monsieur", link: "croquemonsieur_resep.html", gambar: "assets/th 26.png" },
+      { nama: "Paella", link: "paellaresep.html", gambar: "assets/th 27.png" },
+      { nama: "Gnocchi", link: "gnocchiresep.html", gambar: "assets/th 28.png" },
+      { nama: "Falafel", link: "falafelresep.html", gambar: "assets/th 29.png" },
+      
+    ];
+
+    const input = document.getElementById("searchInput");
+    const hasilContainer = document.getElementById("hasilPencarian");
+
+    input.addEventListener("input", function () {
+      const keyword = this.value.trim().toLowerCase();
+      hasilContainer.innerHTML = "";
+
+      if (keyword === "") {
+        hasilContainer.classList.add("hidden");
+        return;
+      }
+
+      const hasil = resepList.filter(resep => resep.nama.toLowerCase().includes(keyword));
+
+      if (hasil.length > 0) {
+        hasil.forEach(resep => {
+          const card = document.createElement("a");
+          card.href = resep.link;
+          card.className = "bg-[#F9936B] rounded-xl flex flex-col items-center p-6 shadow-lg hover:scale-105 transition-transform duration-200";
+
+          const img = document.createElement("img");
+          img.src = resep.gambar;
+          img.alt = resep.nama;
+          img.className = "w-24 h-24 mb-4";
+
+          const title = document.createElement("p");
+          title.className = "text-white font-semibold text-center";
+          title.textContent = resep.nama;
+
+          card.appendChild(img);
+          card.appendChild(title);
+          hasilContainer.appendChild(card);
+        });
+      } else {
+        hasilContainer.innerHTML = "<p class='text-black text-lg text-center col-span-full'>Tidak ditemukan</p>";
+      }
+
+      hasilContainer.classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
