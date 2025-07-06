@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cek Isi Kulkasmu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body class="min-h-screen bg-[#fffaf3] font-sans">
+
+  <!-- Tombol back -->
+  <div onclick="history.back()" class="absolute top-6 left-6 z-50 cursor-pointer select-none">
+    <img src="assets/Arrow left.png" alt="Kembali" class="w-8 h-8 md:w-10 md:h-10" />
+  </div>
+
+  <main class="max-w-screen-md mx-auto px-6 py-6">
+    <!-- Header -->
+    <section class="mb-6">
+      <div class="mb-3 select-none">
+        <h1 class="text-3xl font-extrabold text-[#d35400] flex items-center gap-2">
+          🧊 Cek Isi Kulkasmu
+        </h1>
+      </div>
+      <p class="text-base text-[#444] leading-snug">
+        Masukkan bahan makanan yang kamu punya di kulkas, lalu kami bantu carikan resep yang cocok!<br />
+        Contoh: <i>telur, susu, roti</i>
+      </p>
+    </section>
+
+    <!-- Form dan hasil pencarian -->
+    <section class="bg-[#fff0e0] p-6 rounded-xl shadow-md">
+      <input type="text" id="bahan" placeholder="Masukkan bahan, contoh: telur, susu"
+        class="w-full p-3 rounded-lg border border-gray-300 mb-4" />
+
+      <button onclick="cekResep()" class="bg-[#e67e22] text-white py-2 px-4 rounded-lg mb-4 hover:bg-[#cf711c]">
+        Cek Resep
+      </button>
+
+      <ul id="hasil-resep" class="space-y-2 text-[#7a1a0a] font-medium text-base"></ul>
+    </section>
+  </main>
+
+   <script>
+    const dataResep = [
+      {"nama":"Bolu Kukus Mekar","link":"cakeresep_bolu.html","kategori":"Kue","deskripsi":"Bolu kukus yang mekar sempurna dan lembut, cocok untuk camilan keluarga."},
+      {"nama":"Brownies Panggang Lumer","link":"cakeresep_brownies.html","kategori":"Kue","deskripsi":"Brownies panggang dengan tekstur fudgy dan cokelat yang lumer di mulut."},
+      {"nama":"Japanese Cheesecake","link":"cakeresep_cheesecake.html","kategori":"Kue","deskripsi":"Cheesecake ala Jepang yang lembut, ringan, dan meleleh saat dimakan."},
+      {"nama":"Puding Lumut Pandan","link":"puddingresep_lumut.html","kategori":"Puding","deskripsi":"Puding dengan tekstur unik seperti lumut dan aroma pandan yang menggoda."},
+      {"nama":"Agar-agar Buah","link":"puddingresep_buah.html","kategori":"Puding","deskripsi":"Agar-agar segar dengan potongan buah, cocok untuk hidangan penutup sehat."},
+      {"nama":"Puding Roti Tawar Kukus","link":"puddingresep_roti.html","kategori":"Puding","deskripsi":"Puding roti tawar kukus yang manis dan lembut, cocok untuk segala suasana."},
+      {"nama":"Tiramisu Dessert Box","link":"desserttiramisu.html","kategori":"Dessert","deskripsi":"Dessert box tiramisu dengan lapisan kopi dan krim mascarpone yang lembut."},
+      {"nama":"Regal Cokelat Dessert Box","link":"dessertregal.html","kategori":"Dessert","deskripsi":"Dessert box dengan biskuit regal dan lapisan cokelat yang nikmat."},
+      {"nama":"Oreo Cream Cheese Dessert Box","link":"dessertoreo.html","kategori":"Dessert","deskripsi":"Oreo dan cream cheese dalam satu box, perpaduan manis yang memanjakan lidah."},
+      {"nama":"Es Cendol Gula Merah","link":"esresep_cendol.html","kategori":"Minuman","deskripsi":"Minuman tradisional dengan cendol kenyal dan kuah santan gula merah."},
+      {"nama":"Es Teler","link":"esresep_teler.html","kategori":"Minuman","deskripsi":"Campuran buah segar dengan santan dan susu kental manis, segar dan lezat."},
+      {"nama":"Es Doger","link":"esresep_doger.html","kategori":"Minuman","deskripsi":"Minuman es khas Betawi dengan tape, ketan, dan santan manis."},
+      {"nama":"Klepon Gula Merah","link":"tradisresep_klepon.html","kategori":"Kue Tradisional","deskripsi":"Kue ketan isi gula merah yang meletup di mulut, dibalut kelapa parut."},
+      {"nama":"Nagasari Pisang","link":"tradisresep_nagasari.html","kategori":"Kue Tradisional","deskripsi":"Kue kukus berisi pisang dan adonan tepung beras yang dibungkus daun pisang."},
+      {"nama":"Dadar Gulung Isi Kelapa","link":"tradisresep_dadargulung.html","kategori":"Kue Tradisional","deskripsi":"Kulit dadar berwarna hijau berisi unti kelapa manis, favorit semua umur."},
+      {"nama":"Nasi uduk","link":"nasiuduk_resep.html","kategori":"Makanan Berat","deskripsi":"Nasi gurih khas Betawi yang disajikan dengan aneka lauk pauk."},
+      {"nama":"Orek Tempe","link":"orektempe_resep.html","kategori":"Makanan Berat","deskripsi":"Tempe goreng berbumbu manis gurih, cocok sebagai lauk harian."},
+      {"nama":"Nasi Liwet","link":"nasiliwet_resep.html","kategori":"Makanan Berat","deskripsi":"Nasi liwet khas Solo dengan aroma santan dan lauk melimpah."},
+      {"nama":"Dendeng Balado","link":"dendengbalado_resep.html","kategori":"Daging","deskripsi":"Irisan daging sapi goreng dengan sambal balado pedas menggoda."},
+      {"nama":"Ayam Bakar","link":"ayambakar_resep.html","kategori":"Daging","deskripsi":"Ayam bakar dengan bumbu rempah yang meresap dan aroma menggoda."},
+      {"nama":"Rica-Rica Entok","link":"ricaentok_resep.html","kategori":"Daging","deskripsi":"Masakan khas pedas dari entok yang dimasak dengan bumbu rica-rica."},
+      {"nama":"Ikan Bakar","link":"ikanbakar_resep.html","kategori":"Seafood","deskripsi":"Ikan segar yang dibakar dengan bumbu khas, lezat disantap hangat."},
+      {"nama":"Udang Saus Padang","link":"udangsaus_resep.html","kategori":"Seafood","deskripsi":"Udang dengan saus Padang yang pedas dan gurih menggugah selera."},
+      {"nama":"Cumi Hitam","link":"cumihitam_resep.html","kategori":"Seafood","deskripsi":"Cumi-cumi dimasak dengan tinta hitamnya sendiri, cita rasa khas laut."},
+      {"nama":"Sayur Asem","link":"sayurasem_resep.html","kategori":"Sayur","deskripsi":"Sayur segar berkuah asam dengan aneka sayuran khas Indonesia."},
+      {"nama":"Tumis Kangkung","link":"tumiskangkung_resep.html","kategori":"Sayur","deskripsi":"Kangkung tumis dengan bawang dan cabai, sederhana namun nikmat."},
+      {"nama":"Soto Ayam","link":"sotoayam_resep.html","kategori":"Sup","deskripsi":"Soto ayam berkuah kuning dengan suwiran ayam dan pelengkap lengkap."},
+      {"nama":"Mie Goreng Jawa","link":"miegoreng_resep.html","kategori":"Makanan Berat","deskripsi":"Mie goreng khas Jawa yang manis gurih dengan suwiran ayam dan sayuran."},
+      {"nama":"Spaghetti","link":"spaghetti_resep.html","kategori":"Pasta","deskripsi":"Spaghetti dengan saus tomat dan daging ala Italia klasik."},
+      {"nama":"Lasagna","link":"lasagna_resep.html","kategori":"Pasta","deskripsi":"Lapisan pasta, daging, dan keju yang dipanggang sempurna."},
+      {"nama":"Tom Yum","link":"tomyumresep.html","kategori":"Sup","deskripsi":"Sup asam pedas khas Thailand dengan seafood dan jamur."},
+      {"nama":"Chicken Katsu","link":"chickenkatsu_resep.html","kategori":"Asia","deskripsi":"Ayam goreng tepung renyah ala Jepang disajikan dengan saus khas."},
+      {"nama":"Butter Chicken","link":"butterchicken_resep.html","kategori":"Asia","deskripsi":"Kari ayam khas India dengan saus tomat dan krim yang kaya rasa."},
+      {"nama":"Beef Bulgoogi","link":"beefbulgogi_resep.html","kategori":"Asia","deskripsi":"Daging sapi iris tipis dimarinasi dan dimasak manis gurih ala Korea."},
+      {"nama":"Croque Monsieur","link":"croquemonsieur_resep.html","kategori":"Eropa","deskripsi":"Roti lapis isi ham dan keju yang dipanggang ala Prancis."},
+      {"nama":"Paella","link":"paellaresep.html","kategori":"Eropa","deskripsi":"Nasi khas Spanyol dengan seafood dan rempah saffron yang kuat."},
+      {"nama":"Gnocchi","link":"gnocchiresep.html","kategori":"Eropa","deskripsi":"Pasta kentang khas Italia yang empuk dan lembut."},
+      {"nama":"Falafel","link":"falafelresep.html","kategori":"Timur Tengah","deskripsi":"Bola-bola goreng dari kacang arab yang renyah dan gurih."}
+    ];
+
+    const input = document.getElementById('bahan');
+    const hasil = document.getElementById('hasil-resep');
+
+    function cekResep() {
+    const keyword = input.value.toLowerCase().trim();
+
+    const hasilFilter = dataResep.filter(r =>
+      r.nama.toLowerCase().includes(keyword) ||
+      r.deskripsi.toLowerCase().includes(keyword)
+    );
+
+    if (hasilFilter.length > 0) {
+      hasil.innerHTML = hasilFilter.map(r => `
+        <li class="bg-white p-4 rounded-lg shadow-sm border">
+          <a href="${r.link}" class="text-[#e67e22] font-bold hover:underline">${r.nama}</a>
+          <p class="text-sm text-gray-600 italic">${r.kategori}</p>
+          <p class="text-sm text-gray-700">${r.deskripsi}</p>
+        </li>
+      `).join('');
+    } else {
+      hasil.innerHTML = `<li class="text-sm text-gray-500">Tidak ditemukan resep yang cocok.</li>`;
+    }
+  }
+</script>
+</body>
+</html>
